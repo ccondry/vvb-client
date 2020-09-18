@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const fetch = require('../fetch')
 
 module.exports = class {
   constructor (parent, path) {
