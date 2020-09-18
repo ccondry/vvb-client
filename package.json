@@ -1,13 +1,26 @@
 {
   "name": "vvb-client",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "license": "ISC",
+  "description": "A Node.js client for Cisco Virtualized Voice Browser REST APIs",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Coty Condry <ccondry@cisco.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccondry/cuic-ui-client.git"
+  },
+  "keywords": [
+    "cisco",
+    "vvb",
+    "pcce",
+    "cvp",
+    "cva"
+  ],
   "dependencies": {
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.1"
-  },
-  "scripts": {
-    "test": "mocha"
   }
 }
