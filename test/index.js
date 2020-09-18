@@ -18,7 +18,7 @@ const vvb = new client({
 // test data
 const cache = {
   name: 'fiery-inferno-5992',
-  // description: 'ccondry 0325',
+  description: 'ccondry 0325',
   key: require('../key.json')
 }
 // console.log(cache)
@@ -32,10 +32,10 @@ describe(`Test VVB REST API - `, () => {
     const json = await response.json()
     // check response good or bad
     if (response.ok) {
-      const names = json.serviceAccounts.map(account => {
-        return account.name
-      })
-      console.log(names)
+      // const names = json.serviceAccounts.map(account => {
+      //   return account.name
+      // })
+      // console.log(names)
       return response
     } else {
       // bad response
@@ -62,11 +62,11 @@ describe(`Test VVB REST API - `, () => {
       let message = 'could not parse error response'
       // try to parse the error message details
       try {
-        // const json = await response.json()
+        const json = await response.json()
         // console.log(json)
-        // message = json.apiError[0].errorMessage
-        const text = await response.text()
-        message = text
+        message = json.apiError[0].errorMessage
+        // const text = await response.text()
+        // message = text
       } catch (e) {
         // continue
       }
@@ -84,33 +84,23 @@ describe(`Test VVB REST API - `, () => {
       return response
     } else {
       // bad response
-      let message = ''
+      let message = 'could not parse response message'
       // try to parse the error message details
       try {
         const json = await response.json()
-        console.log(json)
-        message = ' - ' + json.apiError[0].errorMessage
+        console.log('json', json)
+        message = json.apiError[0].errorMessage
       } catch (e) {
-        // continue
+        try {
+          const text = await response.text()
+          console.log('text', text)
+          message = text
+        } catch (e2) {
+          // continue
+        }
       }
-      throw Error(`${response.status} ${response.statusText}${message}`)
+      throw Error(`${response.status} ${response.statusText} - ${message}`)
     }
   })
 
 })
-
-
-// // create new NLP account
-// vvb.createNlpAccount({
-//   name: "fiery-inferno-5992",
-//   description: "ccondry 0325",
-//   key: require('../key.json')
-// })
-// .then(r => r.json())
-// .then(json => {
-//   const names = json.serviceAccounts.map(account => {
-//     return account.name
-//   })
-//   console.log(names)
-// })
-// .catch(e => console.log(e))
