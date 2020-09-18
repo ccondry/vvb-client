@@ -27,7 +27,7 @@ const cache = {
 describe(`Test VVB REST API - `, () => {
   // list all NLP accounts
   it(`list NLP accounts`, async function () {
-    const response = await vvb.listNlpAccounts()
+    const response = await vvb.cva.nlp.listServiceAccounts()
     // parse response body
     const json = await response.json()
     // check response good or bad
@@ -52,7 +52,7 @@ describe(`Test VVB REST API - `, () => {
 
   // create NLP account
   it(`create an NLP account`, async function () {
-    const response = await vvb.createNlpAccount(cache)
+    const response = await vvb.cva.nlp.createServiceAccount(cache)
     // check response good or bad
     if (response.ok) {
       // console.log(json)
@@ -76,7 +76,7 @@ describe(`Test VVB REST API - `, () => {
 
   // update NLP account
   it(`update an NLP account`, async function () {
-    const response = await vvb.updateNlpAccount(cache)
+    const response = await vvb.cva.nlp.updateServiceAccount(cache)
     // check response good or bad
     if (response.ok) {
       // console.log(json)
@@ -100,7 +100,7 @@ describe(`Test VVB REST API - `, () => {
 
   // delete NLP account
   it(`delete an NLP account`, async function () {
-    const response = await vvb.deleteNlpAccount(cache.name)
+    const response = await vvb.cva.nlp.deleteServiceAccount(cache.name)
     // parse response body
     // check response good or bad
     if (response.ok) {
