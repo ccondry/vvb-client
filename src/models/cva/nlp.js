@@ -2,22 +2,23 @@ const fetch = require('node-fetch')
 
 module.exports = class {
   constructor (parent) {
-    this.parent = parent
+    this.url = parent.url + '/nlp/serviceaccount'
+    this.authorization = parent.authorization
   }
 
   async listServiceAccounts () {
-    const url = this.parent.baseUrl
+    const url = this.url
     const options = {
       headers: {
         Accept: 'application/json',
-        Authorization: this.parent.authString
+        Authorization: this.authorization
       }
     }
     return fetch(url, options)
   }
   
   async createServiceAccount ({name, key, description}) {
-    const url = this.parent.baseUrl
+    const url = this.url
     // make sure authKey is a stringified JSON object
     const authKey = typeof key === 'string' ? key : JSON.stringify(key)
     const body = {
@@ -33,7 +34,7 @@ module.exports = class {
       method: 'POST',
       headers: {
         Accept: 'application/json',
-        Authorization: this.parent.authString,
+        Authorization: this.authorization,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
@@ -42,7 +43,7 @@ module.exports = class {
   }
   
   async updateServiceAccount ({name, key, description}) {
-    const url = this.parent.baseUrl + '/' + name
+    const url = this.url + '/' + name
     // make sure authKey is a stringified JSON object
     const authKey = typeof key === 'string' ? key : JSON.stringify(key)
     const body = {
@@ -58,7 +59,7 @@ module.exports = class {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
-        Authorization: this.parent.authString,
+        Authorization: this.authorization,
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
@@ -67,12 +68,12 @@ module.exports = class {
   }
   
   async deleteServiceAccount (name) {
-    const url = this.parent.baseUrl + '/' + name
+    const url = this.url + '/' + name
     const options = {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
-        Authorization: this.parent.authString
+        Authorization: this.authorization
       }
     }
     return fetch(url, options)
