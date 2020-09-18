@@ -1,9 +1,11 @@
 const fetch = require('../fetch')
 
 module.exports = class {
-  constructor (parent, path) {
-    this.url = `${parent.url}/${path}/serviceaccount`
+  constructor (parent, type) {
+    this.url = `${parent.url}/${type}/serviceaccount`
     this.authorization = parent.authorization
+    
+    this.providerName = type === 'nlp' ? 'DialogFlow' : 'Google'
   }
 
   async getServiceAccount (name) {
@@ -35,7 +37,7 @@ module.exports = class {
     const body = {
       serviceAccount: {
         name,
-        providerName: "DialogFlow",
+        providerName: this.providerName,
         authKey,
         properties: [],
         description
@@ -60,7 +62,7 @@ module.exports = class {
     const body = {
       serviceAccount: {
         name,
-        providerName: "DialogFlow",
+        providerName: this.providerName,
         authKey,
         properties: [],
         description
