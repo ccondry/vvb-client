@@ -3,6 +3,14 @@
 Dates are in YYYY-MM-DD format
 
 
+# 1.2.0 (2020-09-18)
+
+### Features
+
+* **CVA:** Parse node-fetch response object to either return JSON data or throw meaningful error message
+
+
+
 # 1.1.0 (2020-09-18)
 
 ### Features
