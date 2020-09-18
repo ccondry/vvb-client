@@ -6,6 +6,17 @@ module.exports = class {
     this.authorization = parent.authorization
   }
 
+  async getServiceAccount (name) {
+    const url = this.url + '/' + name
+    const options = {
+      headers: {
+        Accept: 'application/json',
+        Authorization: this.authorization
+      }
+    }
+    return fetch(url, options)
+  }
+
   async listServiceAccounts () {
     const url = this.url
     const options = {
