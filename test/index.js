@@ -74,6 +74,54 @@ describe(`Test VVB REST API - `, () => {
     }
   })
 
+  // create ASR account
+  it(`create an ASR account`, async function () {
+    const response = await vvb.cva.asr.createServiceAccount(cache)
+    // check response good or bad
+    if (response.ok) {
+      // console.log(json)
+      return response
+    } else {
+      // bad response
+      let message = 'could not parse error response'
+      // try to parse the error message details
+      try {
+        const json = await response.json()
+        // console.log(json)
+        message = json.apiError[0].errorMessage
+        // const text = await response.text()
+        // message = text
+      } catch (e) {
+        // continue
+      }
+      throw Error(`${response.status} ${response.statusText} - ${message}`)
+    }
+  })
+
+  // create TTS account
+  it(`create an TTS account`, async function () {
+    const response = await vvb.cva.tts.createServiceAccount(cache)
+    // check response good or bad
+    if (response.ok) {
+      // console.log(json)
+      return response
+    } else {
+      // bad response
+      let message = 'could not parse error response'
+      // try to parse the error message details
+      try {
+        const json = await response.json()
+        // console.log(json)
+        message = json.apiError[0].errorMessage
+        // const text = await response.text()
+        // message = text
+      } catch (e) {
+        // continue
+      }
+      throw Error(`${response.status} ${response.statusText} - ${message}`)
+    }
+  })
+
   // update NLP account
   it(`update an NLP account`, async function () {
     const response = await vvb.cva.nlp.updateServiceAccount(cache)

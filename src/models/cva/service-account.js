@@ -1,8 +1,8 @@
 const fetch = require('node-fetch')
 
 module.exports = class {
-  constructor (parent) {
-    this.url = parent.url + '/nlp/serviceaccount'
+  constructor (parent, path) {
+    this.url = `${parent.url}/${path}/serviceaccount`
     this.authorization = parent.authorization
   }
 
