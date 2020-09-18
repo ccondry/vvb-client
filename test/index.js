@@ -42,7 +42,7 @@ describe(`Test CVA NLP REST APIs - `, () => {
   
   // get one NLP account
   it(`get service account`, async function () {
-    await vvb.cva.nlp.listServiceAccounts(cache.name)
+    await vvb.cva.nlp.getServiceAccount(cache.name)
   })
 
   // delete NLP account
@@ -70,7 +70,7 @@ describe(`Test CVA ASR REST APIs - `, () => {
 
   // get one ASR account
   it(`get service account`, async function () {
-    await vvb.cva.asr.listServiceAccounts(cache.name)
+    await vvb.cva.asr.getServiceAccount(cache.name)
   })
   
   // delete ASR account
@@ -98,7 +98,7 @@ describe(`Test CVA TTS REST APIs - `, () => {
 
   // get one TTS account
   it(`get service account`, async function () {
-    await vvb.cva.tts.listServiceAccounts(cache.name)
+    await vvb.cva.tts.getServiceAccount(cache.name)
   })
   
   // delete TTS account
