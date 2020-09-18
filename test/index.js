@@ -17,9 +17,9 @@ const vvb = new client({
 
 // test data
 const cache = {
-  name: 'fiery-inferno-5992',
-  description: 'ccondry 0325',
-  key: require('../key.json')
+  name: 'mocha-test-1',
+  description: 'ccondry mocha test',
+  key: 'test'
 }
 // console.log(cache)
 
