@@ -44,6 +44,31 @@ module.exports = class {
     return fetch(url, options)
   }
 
+  async updateNlpAccount ({name, key, description}) {
+    const url = this.baseUrl + '/' + name
+    // make sure authKey is a stringified JSON object
+    const authKey = typeof key === 'string' ? key : JSON.stringify(key)
+    const body = {
+      serviceAccount: {
+        name,
+        providerName: "DialogFlow",
+        authKey,
+        properties: [],
+        description
+      }
+    }
+    const options = {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        Authorization: this.authString,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }
+    return fetch(url, options)
+  }
+
   async deleteNlpAccount (name) {
     const url = this.baseUrl + '/' + name
     const options = {
