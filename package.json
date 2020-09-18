@@ -1,6 +1,6 @@
 {
   "name": "vvb-client",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "ISC",
   "description": "A Node.js client for Cisco Virtualized Voice Browser REST APIs",
   "main": "src/index.js",

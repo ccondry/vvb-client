@@ -3,6 +3,13 @@
 Dates are in YYYY-MM-DD format
 
 
+# 1.2.1 (2020-09-18)
+
+### Features
+
+* **CVA:** Fix providerName for create and update operations on ASR and TTS service accounts
+
+
 # 1.2.0 (2020-09-18)
 
 ### Features
